@@ -1,8 +1,6 @@
 ---
 name: Git Flow
 
-env:
-  ACTIONS_RUNNER_DEBUG: ${{ runner.debug }}
 on:
   - pull_request
   - push
@@ -12,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Debug level
+        run: |
+          echo "ACTIONS_RUNNER_DEBUG: ${ACTIONS_RUNNER_DEBUG}"
+          echo "ACTIONS_STEP_DEBUG: ${ACTIONS_STEP_DEBUG}"
 
       - name: Git Flow Action
         uses: cbdq-io/gitflow-action@feature/mvp
