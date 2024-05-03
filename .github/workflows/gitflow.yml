@@ -1,0 +1,25 @@
+---
+name: Git Flow
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  GitFlow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Retrieve Release Candidate Name
+        id: version
+        run: echo "RELEASE_CANDIDATE_TAG=$( cat VERSION )" >> $GITHUB_OUTPUT
+
+      - name: Git Flow Action
+        uses: cbdq-io/gitflow-action@feature/mvp
+        env:
+          # Setting this environment variable means we can debug by re-running
+          # workflows and ticking "Enable debug logging".
+          ACTIONS_RUNNER_DEBUG: ${{ runner.debug }}
+        with:
+          release-candidate: ${{ steps.version.outputs.RELEASE_CANDIDATE_TAG }}
