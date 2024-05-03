@@ -1,6 +1,8 @@
 ---
 name: Git Flow
 
+env:
+  ACTIONS_RUNNER_DEBUG: ${{ runner.debug }}
 on:
   - pull_request
   - push
