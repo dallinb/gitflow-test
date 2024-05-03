@@ -1,0 +1,15 @@
+---
+name: Git Flow
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  git-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Git Flow Action
+        uses: cbdq-io/gitflow-action@feature/mvp
