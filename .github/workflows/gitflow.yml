@@ -12,10 +12,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Retrieve Release Candidate Name
-        run: echo "RELEASE_CANDIDATE_TAG=$( cat VERSION )" >> $GITHUB_OUTPUT
         id: version
+        run: echo "RELEASE_CANDIDATE_TAG=$( cat VERSION )" >> $GITHUB_OUTPUT
 
       - name: Git Flow Action
+        id: gitflow
         uses: cbdq-io/gitflow-action@feature/mvp
         env:
           # Setting this environment variable means we can debug by re-running
