@@ -21,6 +21,6 @@ jobs:
           # Setting this environment variable means we can debug by re-running
           # workflows and ticking "Enable debug logging".
           ACTIONS_RUNNER_DEBUG: ${{ runner.debug }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           release-candidate: ${{ steps.version.outputs.RELEASE_CANDIDATE_TAG }}
