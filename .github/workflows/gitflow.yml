@@ -2,8 +2,6 @@
 name: Git Flow
 
 on:
-  - pull_request
-  - push
 
 jobs:
   GitFlow:
