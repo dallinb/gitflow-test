@@ -2,8 +2,12 @@
 name: Git Flow
 
 on:
+  # Run on any pull request, or any push of a brach (avoiding pushing of
+  # tags).
   - pull_request
-  - push
+  - push:
+      branches:
+        - *
 
 jobs:
   GitFlow:
@@ -21,6 +25,7 @@ jobs:
           # Setting this environment variable means we can debug by re-running
           # workflows and ticking "Enable debug logging".
           ACTIONS_RUNNER_DEBUG: ${{ runner.debug }}
+
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           release-candidate: ${{ steps.version.outputs.RELEASE_CANDIDATE_TAG }}
