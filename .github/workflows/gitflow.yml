@@ -15,7 +15,9 @@ on:
 
 jobs:
   GitFlow:
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -32,4 +34,5 @@ jobs:
 
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
+          # Set the release candidate to be the output of the previous step.
           release-candidate: ${{ steps.version.outputs.RELEASE_CANDIDATE_TAG }}
