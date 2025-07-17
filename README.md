@@ -2,3 +2,4 @@
 
 A disposable repo for testing the Git Flow action against.
 foo
+bar
